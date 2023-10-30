@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 export default function App(){
   const [todos, setTodos] = React.useState([])
@@ -35,8 +36,8 @@ setNewItem('')
     })
   }
   return(
-    <div>
-      <form className="new-item-form" onSubmit={handleSubmit}>
+    <div className="container">
+      <form className="form new-item-form" onSubmit={handleSubmit}>
         <div className="form-row">
           <label htmlFor="item" >New Item</label>
           <input 
@@ -46,7 +47,7 @@ setNewItem('')
           id="item" 
           />
         </div>
-        <button className="add-item">Add</button>
+        <button className="btn btn-info add-item" >Add</button>
     </form>
       <h1>Todo List</h1>
       {todos.length === 0 && 'No Todos'}
@@ -58,7 +59,7 @@ setNewItem('')
               <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
               {todo.title}
             </label>
-            <button className="btn-danger" onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button className="btn btn-danger" onClick={() => deleteTodo(todo.id)} style={{height:'50%'}}>Delete</button>
           </li>
           )
         })}
